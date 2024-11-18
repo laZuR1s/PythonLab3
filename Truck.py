@@ -38,3 +38,11 @@ class Truck:
     def get_number_of_axes(self):
         return self.__number_of_axes
 
+    def set_brand(self,brand):
+        self.__brand=brand
+    def set_engine_power(self,engine_power):
+        self.__engine_power=engine_power
+    def set_gearbox(self,gearbox):
+        self.__gearbox=gearbox
+    def set_number_of_axes(self,number_of_axes):
+        self.__number_of_axes=number_of_axes
