@@ -1,5 +1,13 @@
 import Truck as tr
+from Truck import Truck
 
+
+# Автор: Лазарев Александр Александрович 9 группа
+
+# Задача №2. Класс «Truck» с полями «марка», «мощность двигателя», «коробка передач»
+# (механика/автомат), «число осей». Декоратор приводит строку-результат функции
+# к верхнему регистру. Декорировать все методы и функции, возвращающие строки.
+# Добавить логический метод, который проверяет указанной ли марки тягач.
 
 def validation(x, condition, message):
     print(message)
@@ -24,9 +32,10 @@ def main_menu():
           f'7. Change gearbox\n'
           f'8. Change number of axes\n'
           f'9. Check truck brand\n'
-          f'10. Exit')
+          f'10. Print to string\n'
+          f'11. Exit')
     choice = 0
-    choice = validation(choice, lambda x: (1 <= x <= 10) and (x % 1 == 0), '')
+    choice = validation(choice, lambda x: (1 <= x <= 11) and (x % 1 == 0), '')
     return choice
 
 
@@ -35,6 +44,7 @@ def input_truck_data():
     engine_power = 0
     engine_power = validation(engine_power, lambda x: x >= 0, 'Enter engine power')
     flag = False
+    gearbox=''
     while not flag:
         gearbox = input('Enter type of gearbox: ')
         if gearbox.lower() == "automatic" or gearbox.lower() == "mechanic":
@@ -66,7 +76,7 @@ def intput_from_file(file_path):
 def write_to_file(file_path):
     try:
         with open(file_path, 'w', encoding='utf-8') as file:
-            line = f"{truck.get_brand},{truck.get_engine_power},{truck.get_gearbox},{truck.get_number_of_axes}\n"
+            line = f"{truck.brand},{truck.engine_power},{truck.gearbox},{truck.number_of_axes}\n"
             file.write(line)
         print(f"Данные успешно записаны в файл {file_path}.")
     except IOError:
@@ -85,32 +95,33 @@ while not exit_flag:
             file_name = input("Enter file name: ")
             truck=intput_from_file(file_name)
         case 3:
-            print(truck.get_brand)
-            print(truck.get_engine_power)
-            print(truck.get_gearbox)
-            print(truck.get_number_of_axes)
+            print(truck.brand)
+            print(truck.engine_power)
+            print(truck.gearbox)
+            print(truck.number_of_axes)
         case 4:
             file_name = input("Enter file name: ")
             write_to_file(file_name)
         case 5:
             brand=input("Enter brand: ")
-            truck.set_brand(brand)
+            truck.brand=brand
         case 6:
-            engine_power=input("Enter brand: ")
-            truck.set_engine_power(engine_power)
+            engine_power=input("Enter engine power: ")
+            truck.engine_power=engine_power
         case 7:
             gearbox=input("Enter gearbox: ")
-            truck.set_gearbox(gearbox)
+            truck.gearbox=gearbox
         case 8:
             number_of_axes=input("Enter numbers of axes: ")
-            truck.set_number_of_axes(number_of_axes)
+            truck.number_of_axes=number_of_axes
         case 9:
             brand=input("Enter brand: ")
             if truck.check_brand(brand):
                 print("Same brand")
             else:
                 print("Not same brand")
-
         case 10:
+            print(truck)
+        case 11:
             exit_flag=True
 

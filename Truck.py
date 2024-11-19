@@ -22,27 +22,41 @@ class Truck:
 
     @property
     @to_uppercase
-    def get_brand(self):
+    def brand(self): # def brand
         return self.__brand
 
     @property
-    def get_engine_power(self):
+    def engine_power(self):
         return self.__engine_power
 
     @property
     @to_uppercase
-    def get_gearbox(self):
+    def gearbox(self):
         return self.__gearbox
 
     @property
-    def get_number_of_axes(self):
+    def number_of_axes(self):
         return self.__number_of_axes
 
-    def set_brand(self,brand):
+#__str__
+    @brand.setter
+    def brand(self,brand): # brand
         self.__brand=brand
-    def set_engine_power(self,engine_power):
+
+    @engine_power.setter
+    def engine_power(self,engine_power):
         self.__engine_power=engine_power
-    def set_gearbox(self,gearbox):
+
+    @gearbox.setter
+    def gearbox(self,gearbox):
         self.__gearbox=gearbox
-    def set_number_of_axes(self,number_of_axes):
+
+    @number_of_axes.setter
+    def number_of_axes(self,number_of_axes):
         self.__number_of_axes=number_of_axes
+
+    def __str__(self):
+        return (f'Brand: {self.brand}\n'
+                f'Engine power: {self.engine_power}\n'
+                f'Type of Gearbox: {self.gearbox}\n'
+                f'Number of axes: {self.number_of_axes}')
